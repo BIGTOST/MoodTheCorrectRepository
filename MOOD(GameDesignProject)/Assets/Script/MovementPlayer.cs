@@ -158,7 +158,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    void TakeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
@@ -225,7 +225,7 @@ public class Projectile : MonoBehaviour
 {
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("enemy"))
         {
             // Lógica para causar dano ao inimigo
             EnemyMelee enemy = collision.gameObject.GetComponent<EnemyMelee>();

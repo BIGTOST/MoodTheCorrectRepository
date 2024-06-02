@@ -17,6 +17,7 @@ public class EnemyRanged : MonoBehaviour
     private bool isRecoiling = false; // Se o inimigo está recuando
     private NavMeshAgent agent; // Referência ao NavMeshAgent
     private float lastAttackTime = 0f; // Armazena o último tempo de ataque
+    public float projectileLifetime = 5f; // Tempo de vida do projétil
 
     void Start()
     {
@@ -72,6 +73,7 @@ public class EnemyRanged : MonoBehaviour
             rb.velocity = (player.position - firePoint.position).normalized * projectileSpeed;
         }
         Debug.Log("Atacando o jogador com um projétil!");
+        projectile.AddComponent<ProjectileHandler>().Initialize(projectileLifetime, "Player");
     }
 
     void OnTriggerEnter(Collider other)
