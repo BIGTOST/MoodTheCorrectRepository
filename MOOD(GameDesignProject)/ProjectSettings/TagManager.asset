@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - SpawnPoints
+  - PlayerProjectile
+  - PlayerMeleeAttack
+  - Enemy
+  - enemyattack
+  - player
   layers:
   - Default
   - TransparentFX
