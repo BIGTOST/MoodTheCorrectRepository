@@ -40,13 +40,16 @@ public class UIManager : MonoBehaviour
         PauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
+
     public void WinGame(){
         GameEnd.SetActive(true);
     }
+
     public void Restart()
     {
         SceneManager.LoadScene("SampleScene");
     }
+    
     public void MainMenu(){
 
         SceneManager.LoadScene("StartScreen");
