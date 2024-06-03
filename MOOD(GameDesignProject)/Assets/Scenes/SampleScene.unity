@@ -1547,7 +1547,7 @@ MonoBehaviour:
   recuoDuration: 0.5
   _healthbar: {fileID: 404497758}
   itemPickupRange: 2
-  uiActions: {fileID: 0}
+  uiActions: {fileID: 1806159096}
 --- !u!95 &321052796
 Animator:
   serializedVersion: 5
@@ -8943,7 +8943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthbarSprite: {fileID: 98221622}
-  gameOverUI: {fileID: 0}
+  gameOverUI: {fileID: 1045355259}
 --- !u!114 &1806159092
 MonoBehaviour:
   m_ObjectHideFlags: 0
