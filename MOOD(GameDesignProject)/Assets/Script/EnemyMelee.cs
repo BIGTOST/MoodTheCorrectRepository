@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class EnemyMelee : MonoBehaviour
 {
     public Transform player; // Refer�ncia ao transform do jogador
+    public MovementPlayer playerData;
     public float attackRange = 2f; // Dist�ncia m�nima para iniciar o ataque
     public float attackCooldown = 1f; // Tempo de recarga entre ataques
     public float attackDuration = 0.5f; // Dura��o do collider de ataque
@@ -98,6 +99,9 @@ public class EnemyMelee : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            playerData.newEnemyKiled();
+
+
         }
         else
         {

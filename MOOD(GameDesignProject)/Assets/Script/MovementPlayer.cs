@@ -69,6 +69,9 @@ public class MovementPlayer : MonoBehaviour
             uiActions.WinGame();
         }
     }
+    public void newEnemyKiled(){
+        enemyKiled++;
+    }
     void MovePlayer()
     {
         // Movimentos
