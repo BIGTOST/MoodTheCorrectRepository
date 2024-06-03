@@ -7,7 +7,7 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Image _healthbarSprite;
     // Start is called before the first frame update
-    public void UpdateHealthBar (float maxHealth, float currentHealth){
+    public void UpdateHealthBar(float maxHealth, float currentHealth){
         _healthbarSprite.fillAmount = currentHealth / maxHealth;
     }
 }

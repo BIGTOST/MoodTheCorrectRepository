@@ -23,10 +23,11 @@ public class MovementPlayer : MonoBehaviour
     private bool canDash = true;
 
     public float maxHealth = 100f;
-    private float currentHealth;
+    public float currentHealth;
     public float recuoDistance = 2f; // Distância do recuo
     public float recuoDuration = 0.5f; // Duração do recuo
     private bool isRecoiling = false; // Se o jogador está recuando
+    
     [SerializeField]
     private HealthBar _healthbar;
     private Inventory inventory;

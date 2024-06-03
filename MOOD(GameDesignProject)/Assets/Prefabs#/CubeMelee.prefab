@@ -174,7 +174,7 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 1
   attackDuration: 0.5
-  attackColliderPrefab: {fileID: 5153152063117054055, guid: fdf5a09534eb4064e84fa91bcdb9616e, type: 3}
+  attackColliderPrefab: {fileID: 5153152063117054055, guid: 8fbccea4fb8130543b0b5a7649f5e510, type: 3}
   maxHealth: 100
   recuoDistance: 2
   recuoDuration: 0.5
