@@ -12,5 +12,17 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealthBar(float maxHealth, float currentHealth)
     {
         _healthbarSprite.fillAmount = currentHealth / maxHealth;
-    }   
+
+        // Verifica se a saúde chegou a zero
+        if (currentHealth <= 0)
+        {
+            ShowGameOverUI();
+        }
+    }
+
+    // Mostra o painel de Game Over
+    private void ShowGameOverUI()
+    {
+        gameOverUI.SetActive(true);
+    }
 }
