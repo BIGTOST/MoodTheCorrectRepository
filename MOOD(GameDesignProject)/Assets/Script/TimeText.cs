@@ -12,7 +12,7 @@ public class TimeText : MonoBehaviour
 
     void Start()
     {
-        timeText.text = "00:00";
+        timeText.text = "00:00:00";
         StartGame(); // Inicia o jogo quando a cena é carregada
     }
 
