@@ -37,15 +37,6 @@ public class TimeText : MonoBehaviour
         gameEnded = true;
         float totalTime = Time.time - startTime;
         PlayerPrefs.SetFloat("FinalTime", totalTime);
-
-        if (win)
-        {
-            SceneManager.LoadScene("menu_vitoria");
-        }
-        else
-        {
-            SceneManager.LoadScene("menu_derrota");
-        }
     }
 
     void DisplayTime(float timeToDisplay)
