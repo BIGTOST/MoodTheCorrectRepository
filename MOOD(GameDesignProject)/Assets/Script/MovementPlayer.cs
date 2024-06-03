@@ -171,7 +171,6 @@ public class MovementPlayer : MonoBehaviour
             else
             {
                 uiActions.UnPause();
-                uiActions.OptionsClose();
             }
         }
     }
