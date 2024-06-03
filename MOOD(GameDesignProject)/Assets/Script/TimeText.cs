@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class TimeText : MonoBehaviour
 {
     public TMP_Text timeText; // Arraste o componente de texto TMP aqui
-    private float startTime;
+    public float startTime;
     private bool gameStarted = false;
     private bool gameEnded = false;
 
     void Start()
     {
-        timeText.text = "00:00:00";
+        timeText.text = "00:00";
         StartGame(); // Inicia o jogo quando a cena é carregada
     }
 
