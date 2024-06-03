@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
         PauseMenu.SetActive(false);
     }
 
-    public void OptionsClose(){        
+    public void OptionsClose(){
         Options.SetActive(false);
         PauseMenu.SetActive(true);
     }
