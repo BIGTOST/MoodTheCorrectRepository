@@ -161,6 +161,7 @@ public class MovementPlayer : MonoBehaviour
             TakeDamage(10f); // Ajuste o valor do dano conforme necessário
         }
     }
+    
     private void PauseAction(){
         if(Input.GetKeyDown(KeyCode.Escape))
         {
