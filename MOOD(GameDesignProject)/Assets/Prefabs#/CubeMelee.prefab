@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 4489452209997848700}
   - component: {fileID: 5954276438978679756}
   - component: {fileID: 1455970609868371764}
-  - component: {fileID: 6978267522280302003}
   - component: {fileID: 8935266236900449454}
+  - component: {fileID: -5118103474451508410}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: CubeMelee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,28 +136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6978267522280302003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4005416979625429664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41702b503aa987f48ae6fce925ccb6b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  attackRange: 10
-  attackCooldown: 2
-  projectilePrefab: {fileID: 5763120566972497767, guid: e59119373cbdba34dab41ae59775c144, type: 3}
-  firePoint: {fileID: 453815402732986815}
-  projectileSpeed: 15
-  recuoDistance: 2
-  recuoDuration: 0.5
-  maxHealth: 100
-  projectileLifetime: 5
 --- !u!195 &8935266236900449454
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -180,6 +158,26 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-5118103474451508410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005416979625429664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1541c59e6ae1ea4888006c26a240960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  attackRange: 2
+  attackCooldown: 1
+  attackDuration: 0.5
+  attackColliderPrefab: {fileID: 5153152063117054055, guid: fdf5a09534eb4064e84fa91bcdb9616e, type: 3}
+  maxHealth: 100
+  recuoDistance: 2
+  recuoDuration: 0.5
 --- !u!1 &8772445269317507783
 GameObject:
   m_ObjectHideFlags: 0
