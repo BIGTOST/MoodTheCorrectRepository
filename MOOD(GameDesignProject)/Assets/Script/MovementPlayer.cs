@@ -33,9 +33,12 @@ public class MovementPlayer : MonoBehaviour
     private Inventory inventory;
     public float itemPickupRange = 2f;
     public UIManager uiActions;
+    public int enemyKiled;
+    public int numeroDeInimigos;
 
     void Start()
     {
+        enemyKiled = 0;
         currentHealth = maxHealth;
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
         inventory = GetComponent<Inventory>();
@@ -48,6 +51,7 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
         PauseAction();
+        EndGame();
 
         if (!isRecoiling)
         {
@@ -58,6 +62,13 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    private void EndGame()
+    {
+        if(enemyKiled >= numeroDeInimigos)
+        {
+            uiActions.WinGame();
+        }
+    }
     void MovePlayer()
     {
         // Movimentos
