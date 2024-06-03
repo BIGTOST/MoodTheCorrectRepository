@@ -23,15 +23,22 @@ public class UIManager : MonoBehaviour
 
     public void Pause(){
         PauseMenu.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void OptionsOpen(){
         Options.SetActive(true);
         PauseMenu.SetActive(false);
     }
+
+    public void OptionsClose(){        
+        Options.SetActive(false);
+        PauseMenu.SetActive(true);
+    }
     
     public void UnPause(){
         PauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
     public void WinGame(){
         GameEnd.SetActive(true);

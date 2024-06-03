@@ -32,6 +32,7 @@ public class MovementPlayer : MonoBehaviour
     private HealthBar _healthbar;
     private Inventory inventory;
     public float itemPickupRange = 2f;
+    public UIManager uiActions;
 
     void Start()
     {
@@ -46,6 +47,8 @@ public class MovementPlayer : MonoBehaviour
 
     void Update()
     {
+        PauseAction();
+
         if (!isRecoiling)
         {
             MovePlayer();
@@ -158,6 +161,20 @@ public class MovementPlayer : MonoBehaviour
             TakeDamage(10f); // Ajuste o valor do dano conforme necessário
         }
     }
+    private void PauseAction(){
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(Time.timeScale > 0)
+            {
+                uiActions.Pause();
+            }
+            else
+            {
+                uiActions.UnPause();
+                uiActions.OptionsClose();
+            }
+        }
+    }
 
     public void TakeDamage(float amount)
     {
@@ -173,7 +190,8 @@ public class MovementPlayer : MonoBehaviour
         }
         else
         {
-            Die();
+            uiActions.GameOver();
+            Destroy(this.gameObject);
         }
     }
 
