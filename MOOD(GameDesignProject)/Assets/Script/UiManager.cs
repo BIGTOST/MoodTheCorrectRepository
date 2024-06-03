@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject Options;
 
+
   
 
     void Awake()
@@ -40,11 +41,9 @@ public class UIManager : MonoBehaviour
         PauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
-
     public void WinGame(){
         GameEnd.SetActive(true);
     }
-
     public void Restart()
     {
         SceneManager.LoadScene("SampleScene");
