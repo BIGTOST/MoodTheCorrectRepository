@@ -17,9 +17,15 @@ public class EnemyMelee : MonoBehaviour
     private float lastAttackTime = 0f; // Armazena o �ltimo tempo de ataque
     private NavMeshAgent agent; // Refer�ncia ao NavMeshAgent
     private bool isRecoiling = false; // Se o inimigo est� recuando
-
+    private Animator anim;
+    private float distanceToPlayer;
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
+        distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if(anim == null){
+            Debug.Log($"Animator not Found");
+        }
         agent = GetComponent<NavMeshAgent>(); // Inicializa a refer�ncia ao NavMeshAgent
         currentHealth = maxHealth;
 
@@ -41,11 +47,13 @@ public class EnemyMelee : MonoBehaviour
                 return;
             }
 
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position); // Calcula a dist�ncia do inimigo ao jogador
+            distanceToPlayer = Vector3.Distance(transform.position, player.position); // Calcula a dist�ncia do inimigo ao jogador
 
-            if (distanceToPlayer > attackRange)
+            anim.SetBool("Walking", !IsPlayerInRange());
+            if (IsPlayerInRange())
             {
                 // Move-se em dire��o ao jogador
+                
                 agent.SetDestination(player.position);
             }
             else
@@ -55,6 +63,7 @@ public class EnemyMelee : MonoBehaviour
 
                 if (Time.time > lastAttackTime + attackCooldown)
                 {
+                    anim.SetTrigger("AttackTrigger");
                     AttackPlayer();
                     lastAttackTime = Time.time;
                 }
@@ -62,8 +71,14 @@ public class EnemyMelee : MonoBehaviour
         }
     }
 
+    private bool IsPlayerInRange(){
+        return distanceToPlayer > attackRange;
+    }
+    
     void AttackPlayer()
     {
+        
+        
         // Criar um collider tempor�rio para o ataque
         GameObject attackCollider = Instantiate(attackColliderPrefab, transform.position + transform.forward * 1f, transform.rotation);
         attackCollider.tag = "enemyattack";
