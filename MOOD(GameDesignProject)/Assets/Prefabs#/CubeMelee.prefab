@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  playerData: {fileID: 0}
   attackRange: 2
   attackCooldown: 1
   attackDuration: 0.5
@@ -262,7 +263,7 @@ PrefabInstance:
     - target: {fileID: 5945778264973192461, guid: f2324918c0297fe448a4b207f7e7deea, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 78683a88e6b7de34780600954fd4fafd, type: 2}
+      objectReference: {fileID: 2100000, guid: 90c9fee2e1cdb8f4da69171ab8a16fb0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
