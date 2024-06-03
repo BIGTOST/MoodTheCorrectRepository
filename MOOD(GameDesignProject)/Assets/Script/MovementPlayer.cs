@@ -225,7 +225,7 @@ public class Projectile : MonoBehaviour
 {
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             // Lógica para causar dano ao inimigo
             EnemyMelee enemy = collision.gameObject.GetComponent<EnemyMelee>();
