@@ -75,7 +75,6 @@ public class EnemyMelee : MonoBehaviour
     private bool IsPlayerInRange(){
         return distanceToPlayer > attackRange;
     }
-    
     void AttackPlayer()
     {
         
@@ -116,8 +115,7 @@ public class EnemyMelee : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator Recoil()
-    {
+    IEnumerator Recoil(){
         isRecoiling = true;
         Vector3 recuoDirection = -transform.forward * recuoDistance;
         Vector3 recuoTarget = transform.position + recuoDirection;

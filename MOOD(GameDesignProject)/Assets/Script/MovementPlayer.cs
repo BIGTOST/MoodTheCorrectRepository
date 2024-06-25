@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MovementPlayer : MonoBehaviour
 {
+    #region  STATS
     public CharacterController controller;
     public float speed = 6f;
     public float meleeRange = 1.5f;
@@ -35,7 +36,7 @@ public class MovementPlayer : MonoBehaviour
     public UIManager uiActions;
     public int enemyKiled;
     public int numeroDeInimigos;
-
+    #endregion 
     void Start()
     {
         enemyKiled = 0;
