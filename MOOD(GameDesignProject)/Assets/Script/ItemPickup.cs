@@ -5,13 +5,13 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     // Start is called before the first frame update
-    private GameObject itemInRange;
+    private GameObject item_relampagoInRange;
     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (itemInRange != null)
+            if (item_relampagoInRange != null)
             {
                 PickUpItem();
             }
@@ -20,26 +20,26 @@ public class ItemPickup : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("item"))
+        if (other.CompareTag("item_relampago"))
         {
-            itemInRange = other.gameObject;
-            Debug.Log("Item in range: " + itemInRange.name);
+            item_relampagoInRange = other.gameObject;
+            Debug.Log("Item in range: " + item_relampagoInRange.name);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("item"))
+        if (other.CompareTag("item_relampago"))
         {
-            itemInRange = null;
+            item_relampagoInRange = null;
             Debug.Log("Item out of range.");
         }
     }
 
     void PickUpItem()
     {
-        Debug.Log("Picked up: " + itemInRange.name);
-        Destroy(itemInRange);
-        itemInRange = null;
+        Debug.Log("Picked up: " + item_relampagoInRange.name);
+        Destroy(item_relampagoInRange);
+        item_relampagoInRange = null;
     }
 }
