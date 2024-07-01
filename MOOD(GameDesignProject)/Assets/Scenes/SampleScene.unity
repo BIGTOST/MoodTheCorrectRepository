@@ -8301,7 +8301,8 @@ PrefabInstance:
       value: equipamentos_relampago
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 361fdfc0e6590b74f9429ca71d119398, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 361fdfc0e6590b74f9429ca71d119398, type: 3}
