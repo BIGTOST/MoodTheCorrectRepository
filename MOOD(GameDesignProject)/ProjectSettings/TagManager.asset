@@ -11,6 +11,8 @@ TagManager:
   - enemyattack
   - player
   - item_relampago
+  - item_amuleto
+  - item_escudo
   layers:
   - Default
   - TransparentFX
