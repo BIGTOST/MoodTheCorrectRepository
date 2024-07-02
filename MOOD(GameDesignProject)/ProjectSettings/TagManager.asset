@@ -13,6 +13,7 @@ TagManager:
   - item_relampago
   - item_amuleto
   - item_escudo
+  - item_orbe
   layers:
   - Default
   - TransparentFX

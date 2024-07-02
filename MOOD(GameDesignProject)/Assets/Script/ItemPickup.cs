@@ -5,11 +5,11 @@ using TMPro;
 
 public class ItemPickup : MonoBehaviour
 {
-    // SerializeField para associar os TextMesh Pro no Unity
+   
     [SerializeField] private TextMeshProUGUI agilityText;
     [SerializeField] private TextMeshProUGUI powerText;
 
-    // Contadores
+    
     private int agilityCount = 0;
     private int powerCount = 0;
 
@@ -17,7 +17,7 @@ public class ItemPickup : MonoBehaviour
 
     void Start()
     {
-        // Inicializa os textos no início
+       
         UpdateAgilityText();
         UpdatePowerText();
     }
@@ -35,7 +35,7 @@ public class ItemPickup : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("item_relampago") || other.CompareTag("item_escudo") || other.CompareTag("item_amuleto"))
+        if (other.CompareTag("item_relampago") || other.CompareTag("item_escudo") || other.CompareTag("item_amuleto") || other.CompareTag("item_orbe"))
         {
             itemInRange = other.gameObject;
             Debug.Log("Item in range: " + itemInRange.name);
@@ -44,7 +44,7 @@ public class ItemPickup : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("item_relampago") || other.CompareTag("item_escudo") || other.CompareTag("item_amuleto"))
+        if (other.CompareTag("item_relampago") || other.CompareTag("item_escudo") || other.CompareTag("item_amuleto") || other.CompareTag("item_orbe"))
         {
             itemInRange = null;
             Debug.Log("Item out of range.");
@@ -65,19 +65,23 @@ public class ItemPickup : MonoBehaviour
             powerCount += 10;
             UpdatePowerText();
         }
+  
+        else if (itemInRange.CompareTag("item_orbe"))
+        {
+            Debug.Log("Orbe item picked up, no counters updated.");
+        }
 
         Destroy(itemInRange);
         itemInRange = null;
     }
 
-    // Método para atualizar o TextMesh Pro com o valor atual do contador de agilidade
     void UpdateAgilityText()
     {
         agilityText.text = agilityCount.ToString();
         Debug.Log("Updated Agility Text: " + agilityText.text);
     }
 
-    // Método para atualizar o TextMesh Pro com o valor atual do contador de poder
+   
     void UpdatePowerText()
     {
         powerText.text = powerCount.ToString();
