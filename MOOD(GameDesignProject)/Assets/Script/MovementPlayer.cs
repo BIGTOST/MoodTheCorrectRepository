@@ -37,7 +37,7 @@ public class MovementPlayer : MonoBehaviour
     public int enemyKiled;
     public int numeroDeInimigos;
     #endregion 
-    void Start()
+   void Start()
     {
         enemyKiled = 0;
         currentHealth = maxHealth;
@@ -215,6 +215,14 @@ public class MovementPlayer : MonoBehaviour
         // Lógica de morte do jogador (reiniciar o nível, mostrar tela de game over, etc.)
         Debug.Log("O jogador morreu!");
         SceneManager.LoadScene("GameOver");
+    }
+
+     public void IncreaseHealth(float amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        _healthbar.UpdateHealthBar(maxHealth, currentHealth);
+        Debug.Log("Health increased. Current health: " + currentHealth);
     }
 
     IEnumerator Recoil()

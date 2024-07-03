@@ -2835,6 +2835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agilityText: {fileID: 430275178}
   powerText: {fileID: 1044287339}
+  player: {fileID: 321052795}
 --- !u!4 &321945726 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8980742247610941076, guid: 0ec3576877e24094998827f45e038f6d, type: 3}

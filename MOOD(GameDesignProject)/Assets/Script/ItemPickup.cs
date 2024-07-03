@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
 public class ItemPickup : MonoBehaviour
 {
-   
     [SerializeField] private TextMeshProUGUI agilityText;
     [SerializeField] private TextMeshProUGUI powerText;
+    [SerializeField] private MovementPlayer player; // Referência ao script do jogador
 
-    
     private int agilityCount = 0;
     private int powerCount = 0;
-
     private GameObject itemInRange;
 
     void Start()
     {
-       
         UpdateAgilityText();
         UpdatePowerText();
     }
@@ -65,10 +67,10 @@ public class ItemPickup : MonoBehaviour
             powerCount += 10;
             UpdatePowerText();
         }
-  
         else if (itemInRange.CompareTag("item_orbe"))
         {
-            Debug.Log("Orbe item picked up, no counters updated.");
+            Debug.Log("Orbe item picked up, increasing player health.");
+            player.IncreaseHealth(10f); // Aumenta a saúde do jogador
         }
 
         Destroy(itemInRange);
@@ -81,7 +83,6 @@ public class ItemPickup : MonoBehaviour
         Debug.Log("Updated Agility Text: " + agilityText.text);
     }
 
-   
     void UpdatePowerText()
     {
         powerText.text = powerCount.ToString();
