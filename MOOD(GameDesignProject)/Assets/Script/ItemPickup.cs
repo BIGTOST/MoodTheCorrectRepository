@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-
 public class ItemPickup : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI agilityText;
     [SerializeField] private TextMeshProUGUI powerText;
-    [SerializeField] private MovementPlayer player; // Referência ao script do jogador
+    [SerializeField] private TextMeshProUGUI pickupMessageText; 
+    [SerializeField] private MovementPlayer player;
 
     private int agilityCount = 0;
     private int powerCount = 0;
@@ -22,6 +18,7 @@ public class ItemPickup : MonoBehaviour
     {
         UpdateAgilityText();
         UpdatePowerText();
+        pickupMessageText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -61,16 +58,19 @@ public class ItemPickup : MonoBehaviour
         {
             agilityCount += 10;
             UpdateAgilityText();
+            StartCoroutine(ShowPickupMessage("+10 Agility")); 
         }
         else if (itemInRange.CompareTag("item_escudo") || itemInRange.CompareTag("item_amuleto"))
         {
             powerCount += 10;
             UpdatePowerText();
+            StartCoroutine(ShowPickupMessage("+10 Power")); 
         }
         else if (itemInRange.CompareTag("item_orbe"))
         {
             Debug.Log("Orbe item picked up, increasing player health.");
-            player.IncreaseHealth(10f); // Aumenta a saúde do jogador
+            player.IncreaseHealth(10f); 
+            StartCoroutine(ShowPickupMessage("+10 Health")); 
         }
 
         Destroy(itemInRange);
@@ -87,5 +87,13 @@ public class ItemPickup : MonoBehaviour
     {
         powerText.text = powerCount.ToString();
         Debug.Log("Updated Power Text: " + powerText.text);
+    }
+
+    private IEnumerator ShowPickupMessage(string message)
+    {
+        pickupMessageText.text = message;
+        pickupMessageText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f); 
+        pickupMessageText.gameObject.SetActive(false);
     }
 }
