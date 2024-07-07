@@ -4,30 +4,30 @@ using System.Collections;
 
 public class EnemyRanged : MonoBehaviour
 {
-    public Transform player; // Referência ao transform do jogador
-    public float attackRange = 10f; // Distância mínima para iniciar o ataque
+    public Transform player; // Referï¿½ncia ao transform do jogador
+    public float attackRange = 10f; // Distï¿½ncia mï¿½nima para iniciar o ataque
     public float attackCooldown = 2f; // Tempo de recarga entre ataques
-    public GameObject projectilePrefab; // Prefab do projétil
-    public Transform firePoint; // Ponto de onde os projéteis serão disparados
-    public float projectileSpeed = 15f; // Velocidade do projétil
-    public float recuoDistance = 2f; // Distância do recuo ao receber dano
-    public float recuoDuration = 0.5f; // Duração do recuo
+    public GameObject projectilePrefab; // Prefab do projï¿½til
+    public Transform firePoint; // Ponto de onde os projï¿½teis serï¿½o disparados
+    public float projectileSpeed = 15f; // Velocidade do projï¿½til
+    public float recuoDistance = 2f; // Distï¿½ncia do recuo ao receber dano
+    public float recuoDuration = 0.5f; // Duraï¿½ï¿½o do recuo
     public float maxHealth = 100f;
     private float currentHealth;
-    private bool isRecoiling = false; // Se o inimigo está recuando
-    private NavMeshAgent agent; // Referência ao NavMeshAgent
-    private float lastAttackTime = 0f; // Armazena o último tempo de ataque
-    public float projectileLifetime = 5f; // Tempo de vida do projétil
+    private bool isRecoiling = false; // Se o inimigo estï¿½ recuando
+    private NavMeshAgent agent; // Referï¿½ncia ao NavMeshAgent
+    private float lastAttackTime = 0f; // Armazena o ï¿½ltimo tempo de ataque
+    public float projectileLifetime = 5f; // Tempo de vida do projï¿½til
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>(); // Inicializa a referência ao NavMeshAgent
+        agent = GetComponent<NavMeshAgent>(); // Inicializa a referï¿½ncia ao NavMeshAgent
         currentHealth = maxHealth;
 
-        // Verificar se o agente está corretamente configurado
+        // Verificar se o agente estï¿½ corretamente configurado
         if (agent == null)
         {
-            Debug.LogError("NavMeshAgent não encontrado no inimigo.");
+            Debug.LogError("NavMeshAgent nï¿½o encontrado no inimigo.");
         }
     }
 
@@ -35,18 +35,18 @@ public class EnemyRanged : MonoBehaviour
     {
         if (player != null && agent != null && !isRecoiling)
         {
-            // Verificar se o agente está ativo e em um NavMesh
+            // Verificar se o agente estï¿½ ativo e em um NavMesh
             if (!agent.isOnNavMesh)
             {
-                Debug.LogError("NavMeshAgent não está no NavMesh.");
+                Debug.LogError("NavMeshAgent nï¿½o estï¿½ no NavMesh.");
                 return;
             }
 
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position); // Calcula a distância do inimigo ao jogador
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position); // Calcula a distï¿½ncia do inimigo ao jogador
 
             if (distanceToPlayer > attackRange)
             {
-                // Move-se em direção ao jogador
+                // Move-se em direï¿½ï¿½o ao jogador
                 agent.SetDestination(player.position);
             }
             else
@@ -65,14 +65,14 @@ public class EnemyRanged : MonoBehaviour
 
     void AttackPlayer()
     {
-        // Instanciar e lançar o projétil
+        // Instanciar e lanï¿½ar o projï¿½til
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.velocity = (player.position - firePoint.position).normalized * projectileSpeed;
         }
-        Debug.Log("Atacando o jogador com um projétil!");
+        Debug.Log("Atacando o jogador com um projï¿½til!");
         projectile.AddComponent<ProjectileHandler>().Initialize(projectileLifetime, "Player");
     }
 
@@ -80,7 +80,7 @@ public class EnemyRanged : MonoBehaviour
     {
         if (other.CompareTag("PlayerMeleeAttack") || other.CompareTag("PlayerProjectile"))
         {
-            TakeDamage(10f); // Ajuste o valor do dano conforme necessário
+            TakeDamage(10f); // Ajuste o valor do dano conforme necessï¿½rio
         }
     }
 
@@ -102,7 +102,7 @@ public class EnemyRanged : MonoBehaviour
 
     void Die()
     {
-        // Lógica de morte do inimigo (destruir o inimigo, soltar loot, etc.)
+        // Lï¿½gica de morte do inimigo (destruir o inimigo, soltar loot, etc.)
         Debug.Log("O inimigo morreu!");
         Destroy(gameObject);
     }

@@ -158,6 +158,9 @@ MonoBehaviour:
   recuoDuration: 0.5
   maxHealth: 100
   projectileLifetime: 5
+  coinPrefab: {fileID: 3705253475661761982, guid: 755d377e9eda6db48b4076b5b7470c06, type: 3}
+  coinsOnDeath: 40
+  coinsToDrop: 4
 --- !u!195 &8935266236900449454
 NavMeshAgent:
   m_ObjectHideFlags: 0
