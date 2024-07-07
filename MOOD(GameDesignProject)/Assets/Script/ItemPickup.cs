@@ -23,7 +23,7 @@ public class ItemPickup : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             if (itemInRange != null)
             {
