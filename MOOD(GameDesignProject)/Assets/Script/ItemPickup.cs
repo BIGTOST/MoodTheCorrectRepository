@@ -56,24 +56,61 @@ public class ItemPickup : MonoBehaviour
     {
         Debug.Log("Picked up: " + itemInRange.name);
 
-        if (itemInRange.CompareTag("item_relampago") || itemInRange.CompareTag("loja_relampago"))
+        if (itemInRange.CompareTag("item_relampago"))
         {
             agilityCount += 10;
             UpdateAgilityText();
             StartCoroutine(ShowPickupMessage("+10 Agility")); 
         }
-        else if (itemInRange.CompareTag("item_escudo") || itemInRange.CompareTag("loja_escudo") ||
-                 itemInRange.CompareTag("item_amuleto") || itemInRange.CompareTag("loja_amuleto"))
+        else if (itemInRange.CompareTag("item_escudo") || itemInRange.CompareTag("item_amuleto"))
         {
             powerCount += 10;
             UpdatePowerText();
             StartCoroutine(ShowPickupMessage("+10 Power")); 
         }
-        else if (itemInRange.CompareTag("item_orbe") || itemInRange.CompareTag("loja_orbe"))
+        else if (itemInRange.CompareTag("item_orbe"))
         {
             Debug.Log("Orbe item picked up, increasing player health.");
             player.IncreaseHealth(10f); 
             StartCoroutine(ShowPickupMessage("+10 Health")); 
+        }
+        else if (itemInRange.CompareTag("loja_relampago"))
+        {
+            if (CoinManager.instance.SpendCoins(30))
+            {
+                agilityCount += 10;
+                UpdateAgilityText();
+                StartCoroutine(ShowPickupMessage("+10 Agility"));
+            }
+            else
+            {
+                StartCoroutine(ShowPickupMessage("Not Enough Money"));
+            }
+        }
+        else if (itemInRange.CompareTag("loja_escudo") || itemInRange.CompareTag("loja_amuleto"))
+        {
+            if (CoinManager.instance.SpendCoins(30))
+            {
+                powerCount += 10;
+                UpdatePowerText();
+                StartCoroutine(ShowPickupMessage("+10 Power"));
+            }
+            else
+            {
+                StartCoroutine(ShowPickupMessage("Not Enough Money"));
+            }
+        }
+        else if (itemInRange.CompareTag("loja_orbe"))
+        {
+            if (CoinManager.instance.SpendCoins(60))
+            {
+                player.IncreaseHealth(10f);
+                StartCoroutine(ShowPickupMessage("+10 Health"));
+            }
+            else
+            {
+                StartCoroutine(ShowPickupMessage("Not Enough Money"));
+            }
         }
 
         if (itemInRange.CompareTag("item_relampago") || itemInRange.CompareTag("item_escudo") ||

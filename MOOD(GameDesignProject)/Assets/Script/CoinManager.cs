@@ -7,6 +7,7 @@ public class CoinManager : MonoBehaviour
     public static CoinManager instance;
     public TextMeshProUGUI coinCounterText; // Referência ao TextMeshProUGUI para o contador de moedas
     public TextMeshProUGUI coinMessageText; // Referência ao TextMeshProUGUI para a mensagem de moeda
+    public TextMeshProUGUI notEnoughMoneyText; // Referência ao TextMeshProUGUI para a mensagem de "Not Enough Money"
     private int coinCount = 0; // Contador de moedas
 
     void Awake()
@@ -14,6 +15,7 @@ public class CoinManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject); // Preservar o CoinManager entre as cenas
         }
         else
         {
@@ -25,7 +27,23 @@ public class CoinManager : MonoBehaviour
     {
         coinCount += amount;
         UpdateCoinCounterText();
-        StartCoroutine(ShowCoinMessage("+20 Coins"));
+        StartCoroutine(ShowCoinMessage($"+{amount} Coins"));
+    }
+
+    public bool SpendCoins(int amount)
+    {
+        if (coinCount >= amount)
+        {
+            coinCount -= amount;
+            UpdateCoinCounterText();
+            StartCoroutine(ShowCoinMessage($"-{amount} Coins"));
+            return true;
+        }
+        else
+        {
+            StartCoroutine(ShowNotEnoughMoneyMessage("Not Enough Money"));
+            return false;
+        }
     }
 
     private void UpdateCoinCounterText()
@@ -40,4 +58,13 @@ public class CoinManager : MonoBehaviour
         yield return new WaitForSeconds(2f); // Mostra a mensagem por 2 segundos
         coinMessageText.gameObject.SetActive(false);
     }
+
+    private IEnumerator ShowNotEnoughMoneyMessage(string message)
+    {
+        notEnoughMoneyText.text = message;
+        notEnoughMoneyText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f); // Mostra a mensagem por 2 segundos
+        notEnoughMoneyText.gameObject.SetActive(false);
+    }
 }
+
