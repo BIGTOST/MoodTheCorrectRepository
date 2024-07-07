@@ -10,6 +10,7 @@ public class EnemyMelee : MonoBehaviour
     public float attackCooldown = 1f; // Tempo de recarga entre ataques
     public float attackDuration = 0.5f; // Duração do collider de ataque
     public GameObject attackColliderPrefab; // Prefab do collider de ataque
+    public GameObject coinPrefab; // Prefab da moeda
     public float maxHealth = 100f; // Vida máxima do inimigo
     public float recuoDistance = 2f; // Distância do recuo
     public float recuoDuration = 0.5f; // Duração do recuo
@@ -114,8 +115,27 @@ public class EnemyMelee : MonoBehaviour
         // Incrementa o contador de moedas ao morrer
         CoinManager.instance.AddCoins(20);
 
+        // Drop de moedas
+        DropCoins(4);
+
         Destroy(gameObject);
     }
+
+void DropCoins(int coinCount)
+{
+    for (int i = 0; i < coinCount; i++)
+    {
+        float randomX = Random.Range(0.5f, 1.5f);
+        float randomZ = Random.Range(0.5f, 1.5f);
+        
+        // Ajuste a coordenada y para sempre ser positiva, por exemplo, 1f
+        Vector3 randomPosition = transform.position + new Vector3(randomX, 1f, randomZ);
+        
+        GameObject coin = Instantiate(coinPrefab, randomPosition, Quaternion.identity);
+        Debug.Log($"Moeda {i + 1}/{coinCount} dropada na posição {randomPosition}");
+        Destroy(coin, 2f); // Destruir a moeda após 2 segundos
+    }
+}
 
     IEnumerator Recoil()
     {
