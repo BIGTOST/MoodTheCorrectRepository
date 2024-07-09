@@ -3307,7 +3307,6 @@ MonoBehaviour:
   maxHealth: 300
   recuoDistance: 2
   recuoDuration: 0.5
-  coinPrefab: {fileID: 0}
 --- !u!136 &312641030
 CapsuleCollider:
   m_ObjectHideFlags: 0
