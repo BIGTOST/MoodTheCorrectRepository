@@ -60,20 +60,24 @@ public class ItemPickup : MonoBehaviour
         {
             agilityCount += 10;
             UpdateAgilityText();
-            player.IncreaseSpeed(5f); // Aumenta a velocidade do jogador
+            player.IncreaseSpeed(10f); // Aumenta a velocidade do jogador
             StartCoroutine(ShowPickupMessage("+10 Agility"));
         }
         else if (itemInRange.CompareTag("item_escudo") || itemInRange.CompareTag("item_amuleto"))
         {
             powerCount += 10;
             UpdatePowerText();
-            player.IncreaseDamage(5f); // Aumenta o dano do jogador
+            player.IncreaseDamage(20f); // Aumenta o dano do jogador
             StartCoroutine(ShowPickupMessage("+10 Power"));
         }
         else if (itemInRange.CompareTag("item_orbe"))
         {
             Debug.Log("Orbe item picked up, increasing player health.");
+<<<<<<< HEAD
             player.IncreaseHealth(30f);
+=======
+            player.IncreaseHealth(10f);
+>>>>>>> parent of a936191 (update)
             StartCoroutine(ShowPickupMessage("+10 Health"));
         }
         else if (itemInRange.CompareTag("loja_relampago"))
@@ -82,7 +86,7 @@ public class ItemPickup : MonoBehaviour
             {
                 agilityCount += 10;
                 UpdateAgilityText();
-                player.IncreaseSpeed(5f); // Aumenta a velocidade do jogador
+                player.IncreaseSpeed(2f); // Aumenta a velocidade do jogador
                 StartCoroutine(ShowPickupMessage("+10 Agility"));
             }
             else
@@ -96,7 +100,7 @@ public class ItemPickup : MonoBehaviour
             {
                 powerCount += 10;
                 UpdatePowerText();
-                player.IncreaseDamage(5f); // Aumenta o dano do jogador
+                player.IncreaseDamage(50f); // Aumenta o dano do jogador
                 StartCoroutine(ShowPickupMessage("+10 Power"));
             }
             else
@@ -108,7 +112,11 @@ public class ItemPickup : MonoBehaviour
         {
             if (CoinManager.instance.SpendCoins(60))
             {
+<<<<<<< HEAD
                 player.IncreaseHealth(30f);
+=======
+                player.IncreaseHealth(10f);
+>>>>>>> parent of a936191 (update)
                 StartCoroutine(ShowPickupMessage("+10 Health"));
             }
             else
