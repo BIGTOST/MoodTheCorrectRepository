@@ -71,7 +71,7 @@ public class ItemPickup : MonoBehaviour
         else if (itemInRange.CompareTag("item_orbe"))
         {
             Debug.Log("Orbe item picked up, increasing player health.");
-            player.IncreaseHealth(10f); 
+            player.IncreaseHealth(20f); 
             StartCoroutine(ShowPickupMessage("+10 Health")); 
         }
         else if (itemInRange.CompareTag("loja_relampago"))
