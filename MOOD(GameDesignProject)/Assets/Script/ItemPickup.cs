@@ -73,9 +73,11 @@ public class ItemPickup : MonoBehaviour
         else if (itemInRange.CompareTag("item_orbe"))
         {
             Debug.Log("Orbe item picked up, increasing player health.");
-
+<<<<<<< HEAD
             player.IncreaseHealth(30f);
-
+=======
+            player.IncreaseHealth(10f);
+>>>>>>> parent of a936191 (update)
             StartCoroutine(ShowPickupMessage("+10 Health"));
         }
         else if (itemInRange.CompareTag("loja_relampago"))
@@ -110,9 +112,11 @@ public class ItemPickup : MonoBehaviour
         {
             if (CoinManager.instance.SpendCoins(60))
             {
-
+<<<<<<< HEAD
                 player.IncreaseHealth(30f);
-
+=======
+                player.IncreaseHealth(10f);
+>>>>>>> parent of a936191 (update)
                 StartCoroutine(ShowPickupMessage("+10 Health"));
             }
             else
