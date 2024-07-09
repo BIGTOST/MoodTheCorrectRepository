@@ -67,7 +67,7 @@ public class ItemPickup : MonoBehaviour
         {
             powerCount += 10;
             UpdatePowerText();
-            player.IncreaseDamage(100f); // Aumenta o dano do jogador
+            player.IncreaseDamage(20f); // Aumenta o dano do jogador
             StartCoroutine(ShowPickupMessage("+10 Power"));
         }
         else if (itemInRange.CompareTag("item_orbe"))
