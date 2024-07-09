@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3296,6 +3296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  playerData: {fileID: 0}
   closeAttackRange: 2
   farAttackRange: 5
   attackCooldown: 1.5
@@ -3396,6 +3397,8 @@ MonoBehaviour:
   firePoint: {fileID: 938484590}
   projectileLifetime: 5
   rangedAttackCooldown: 0.5
+  meleeDamage: 10
+  projectileDamage: 10
   dashSpeed: 20
   dashDuration: 0.2
   dashCooldown: 1
