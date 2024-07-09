@@ -4,34 +4,34 @@ using UnityEngine.AI;
 
 public class Boss : MonoBehaviour
 {
-    public Transform player; // Referência ao transform do jogador
+    public Transform player; // Referï¿½ncia ao transform do jogador
     public MovementPlayer playerData;
-    public float closeAttackRange = 2f; // Distância mínima para o ataque corpo a corpo curto
-    public float farAttackRange = 5f; // Distância mínima para o ataque corpo a corpo longo
+    public float closeAttackRange = 2f; // Distï¿½ncia mï¿½nima para o ataque corpo a corpo curto
+    public float farAttackRange = 5f; // Distï¿½ncia mï¿½nima para o ataque corpo a corpo longo
     public float attackCooldown = 1.5f; // Tempo de recarga entre ataques
-    public float closeAttackDuration = 0.5f; // Duração do collider de ataque curto
-    public float farAttackDuration = 0.5f; // Duração do collider de ataque longo
+    public float closeAttackDuration = 0.5f; // Duraï¿½ï¿½o do collider de ataque curto
+    public float farAttackDuration = 0.5f; // Duraï¿½ï¿½o do collider de ataque longo
     public GameObject closeAttackColliderPrefab; // Prefab do collider de ataque curto
     public GameObject farAttackColliderPrefab; // Prefab do collider de ataque longo
-    public float maxHealth = 300f; // Vida máxima do Boss
-    public float recuoDistance = 2f; // Distância do recuo
-    public float recuoDuration = 0.5f; // Duração do recuo
-
+    public float maxHealth = 300f; // Vida mï¿½xima do Boss
+    public float recuoDistance = 2f; // Distï¿½ncia do recuo
+    public float recuoDuration = 0.5f; // Duraï¿½ï¿½o do recuo
+    public GameObject coinPrefab; 
     private float currentHealth; // Vida atual do Boss
-    private float lastAttackTime = 0f; // Armazena o último tempo de ataque
-    private NavMeshAgent agent; // Referência ao NavMeshAgent
-    private bool isRecoiling = false; // Se o Boss está recuando
+    private float lastAttackTime = 0f; // Armazena o ï¿½ltimo tempo de ataque
+    private NavMeshAgent agent; // Referï¿½ncia ao NavMeshAgent
+    private bool isRecoiling = false; // Se o Boss estï¿½ recuando
     private bool isCloseAttack = true; // Flag para alternar entre ataques
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>(); // Inicializa a referência ao NavMeshAgent
+        agent = GetComponent<NavMeshAgent>(); // Inicializa a referï¿½ncia ao NavMeshAgent
         currentHealth = maxHealth;
 
-        // Verificar se o agente está corretamente configurado
+        // Verificar se o agente estï¿½ corretamente configurado
         if (agent == null)
         {
-            Debug.LogError("NavMeshAgent não encontrado no Boss.");
+            Debug.LogError("NavMeshAgent nï¿½o encontrado no Boss.");
         }
     }
 
@@ -39,18 +39,18 @@ public class Boss : MonoBehaviour
     {
         if (player != null && agent != null && !isRecoiling)
         {
-            // Verificar se o agente está ativo e em um NavMesh
+            // Verificar se o agente estï¿½ ativo e em um NavMesh
             if (!agent.isOnNavMesh)
             {
-                Debug.LogError("NavMeshAgent não está no NavMesh.");
+                Debug.LogError("NavMeshAgent nï¿½o estï¿½ no NavMesh.");
                 return;
             }
 
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position); // Calcula a distância do Boss ao jogador
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position); // Calcula a distï¿½ncia do Boss ao jogador
 
             if (distanceToPlayer > farAttackRange)
             {
-                // Move-se em direção ao jogador
+                // Move-se em direï¿½ï¿½o ao jogador
                 agent.SetDestination(player.position);
             }
             else
@@ -70,7 +70,7 @@ public class Boss : MonoBehaviour
                     }
 
                     lastAttackTime = Time.time;
-                    isCloseAttack = !isCloseAttack; // Alterna o ataque para a próxima vez
+                    isCloseAttack = !isCloseAttack; // Alterna o ataque para a prï¿½xima vez
                 }
             }
         }
@@ -78,7 +78,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator PerformCloseAttack()
     {
-        // Criar um collider temporário para o ataque curto
+        // Criar um collider temporï¿½rio para o ataque curto
         Vector3 attackPosition = transform.position + transform.forward * (closeAttackRange / 2);
         GameObject attackCollider = Instantiate(closeAttackColliderPrefab, attackPosition, transform.rotation);
         attackCollider.tag = "enemyattack"; // Adiciona tag ao collider
@@ -97,7 +97,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator PerformFarAttack()
     {
-        // Criar um collider temporário para o ataque longo
+        // Criar um collider temporï¿½rio para o ataque longo
         Vector3 attackPosition = transform.position + transform.forward * (farAttackRange / 2);
         GameObject attackCollider = Instantiate(farAttackColliderPrefab, attackPosition, transform.rotation);
         attackCollider.tag = "enemyattack"; // Adiciona tag ao collider
@@ -132,10 +132,33 @@ public class Boss : MonoBehaviour
 
     void Die()
     {
-        // Lógica de morte do Boss (destruir o objeto, tocar animação, etc.)
+        // Lï¿½gica de morte do Boss (destruir o objeto, tocar animaï¿½ï¿½o, etc.)
         Debug.Log("Boss morreu!");
+        
+        // Incrementa o contador de moedas ao morrer
+        CoinManager.instance.AddCoins(100);
+
+        // Drop de moedas
+        DropCoins(10);
+
         Destroy(gameObject);
     }
+
+    void DropCoins(int coinCount)
+{
+    for (int i = 0; i < coinCount; i++)
+    {
+        float randomX = Random.Range(0.5f, 1.5f);
+        float randomZ = Random.Range(0.5f, 1.5f);
+        
+        // Ajuste a coordenada y para sempre ser positiva, por exemplo, 1f
+        Vector3 randomPosition = transform.position + new Vector3(randomX, 1f, randomZ);
+        
+        GameObject coin = Instantiate(coinPrefab, randomPosition, Quaternion.identity);
+        Debug.Log($"Moeda {i + 1}/{coinCount} dropada na posiÃ§Ã£o {randomPosition}");
+        Destroy(coin, 2f); // Destruir a moeda apÃ³s 2 segundos
+    }
+}
 
     IEnumerator Recoil()
     {
@@ -163,10 +186,10 @@ public class Boss : MonoBehaviour
         }
         else if (other.CompareTag("PlayerProjectile"))
         {
-            // Causa dano ao inimigo quando colidir com o projétil do jogador
+            // Causa dano ao inimigo quando colidir com o projï¿½til do jogador
             float projectileDamage = other.gameObject.GetComponent<Projectile>().damage;
             TakeDamage(projectileDamage);
-            Destroy(other.gameObject); // Destroi o projétil ao colidir com o inimigo
+            Destroy(other.gameObject); // Destroi o projï¿½til ao colidir com o inimigo
         }
     }
 }
