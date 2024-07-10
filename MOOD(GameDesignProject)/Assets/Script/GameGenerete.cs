@@ -43,7 +43,7 @@ public class GameGenerete : MonoBehaviour
         int qualSala = Random.Range(0,todasAsSalas.Length);
         //?cria o plano
         GameObject sala = Instantiate(todasAsSalas[qualSala], new Vector3(posX, 1, posZ), Quaternion.identity);
-        // GameObject.CreatePrimitive(PrimitiveType.Plane);
+        //GameObject.CreatePrimitive(PrimitiveType.Plane);
         //?Posiciona o plano
         //sala.transform.position = new Vector3(posX, 1, posZ);
         MeshRenderer meshRenderer = sala.GetComponentInChildren<MeshRenderer>();
@@ -52,7 +52,7 @@ public class GameGenerete : MonoBehaviour
         posZ -= size.z;
         //Debug.Log($"PositionZ:{size.z}");
         aux = size.x;
-       //Debug.Log($"PositionXAux:{size.x}");
+    //     Debug.Log($"PositionXAux:{size.x}");
     //     Debug.Log($"x:{XdaSala} Y:{YdaSala}");
     //     if(roomNumber !=0){
     //         if(XdaSala == 0 || XdaSala == (mapLenght-1) || YdaSala == 0 || YdaSala == (mapaHeight-1)){

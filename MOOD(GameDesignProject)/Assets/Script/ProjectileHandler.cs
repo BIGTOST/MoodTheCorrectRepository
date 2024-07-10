@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ProjectileHandler : MonoBehaviour
@@ -9,22 +10,22 @@ public class ProjectileHandler : MonoBehaviour
     {
         this.lifetime = lifetime;
         this.targetTag = targetTag;
-        Destroy(gameObject, lifetime); // Destrói o projétil após o tempo de vida
+        Destroy(gameObject, lifetime); // Destrï¿½i o projï¿½til apï¿½s o tempo de vida
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag(targetTag))
-        {
-            // Causa dano ao alvo
-            MovementPlayer player = collision.gameObject.GetComponent<MovementPlayer>();
-            if (player != null)
-            {
-                player.TakeDamage(10f); // Ajuste o valor do dano conforme necessário
-            }
+    // void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag(targetTag))
+    //     {
+    //         // Causa dano ao alvo
+    //         MovementPlayer player = collision.gameObject.GetComponent<MovementPlayer>();
+    //         if (player != null)
+    //         {
+    //             player.TakeDamage(10f); // Ajuste o valor do dano conforme necessï¿½rio
+    //         }
 
-            // Destrói o projétil ao colidir com o alvo
-            Destroy(gameObject);
-        }
-    }
+    //         // Destrï¿½i o projï¿½til ao colidir com o alvo
+    //         Destroy(gameObject);
+    //     }
+    // }
 }
