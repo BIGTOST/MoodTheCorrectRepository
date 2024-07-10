@@ -45,4 +45,11 @@ public class TimeText : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
+    public void ZaWarudo(){
+        Time.timeScale = 0;
+    }
+    public void reverseZaWarudo(){
+        Time.timeScale =1;
+    }
 }
