@@ -156,6 +156,22 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 79f7b1ce634e71e429f1e0a59509cd34, type: 2}
   - {fileID: 2100000, guid: d482b14e4732fb24bbc26f32d6f0152d, type: 2}
   - {fileID: 2100000, guid: 8c3e3b17072448f4f94c323ee61431af, type: 2}
+  todasAsSalas:
+  - {fileID: 5299319243008863218, guid: c8551d4682b651a419c04ea081b01f53, type: 3}
+  - {fileID: 5299319243008863218, guid: a0c261b469aa1384a8fc1d1dd74a3b12, type: 3}
+  - {fileID: 5299319243008863218, guid: 42d6fc5158defef44bfd4ae7ea710897, type: 3}
+  - {fileID: 5299319243008863218, guid: 5138f2e5cc2a7e04e87c9cb323d67084, type: 3}
+  - {fileID: 5299319243008863218, guid: 495070c47c4a1b54492e18e114ac6033, type: 3}
+  - {fileID: 5299319243008863218, guid: 591096d5cc2999f4698ab4ffe1d450e9, type: 3}
+  - {fileID: 5299319243008863218, guid: 3d7ccce5fd3e0c94db5d88f960e52e86, type: 3}
+  - {fileID: 5299319243008863218, guid: 2e8447d54110aaa49b4e6178e8f4fa79, type: 3}
+  - {fileID: 5299319243008863218, guid: 05b957e8cd7b018409694cc1e297a45c, type: 3}
+  - {fileID: 5299319243008863218, guid: f9319b073db26b14599e3eb79f0bc20c, type: 3}
+  - {fileID: 5299319243008863218, guid: 0377183c26de2c84089170ff4b02ecf4, type: 3}
+  - {fileID: 5299319243008863218, guid: a83b3c39a51c7354c93c2c11c51bc1a6, type: 3}
+  - {fileID: 5299319243008863218, guid: e632333ca0b1f074eb2cda3ceff988b4, type: 3}
+  - {fileID: 5299319243008863218, guid: 4dd4d0e52a738164db49e6b05bd85cca, type: 3}
+  - {fileID: 5299319243008863218, guid: 1d12f04c8993d6148be369af08cf6bd9, type: 3}
   mapaHeight: 0
   mapLenght: 0
 --- !u!4 &79956925

@@ -27,10 +27,11 @@ public class GameGenerete : MonoBehaviour
                 int randomIndex = Random.Range(0, materialsList.Length+1);
                 mapMatix[l,c]=randomIndex;
                 CreateRoom(randomIndex, l, c);
+                posZ += 23;
                 //Debug.Log($"Position Aux{aux}");
             }
             posZ = 0;
-            posX += aux;
+            posX += 41 ;
             Debug.Log($"{posX}");
         }
         Debug.Log(
@@ -49,9 +50,7 @@ public class GameGenerete : MonoBehaviour
         MeshRenderer meshRenderer = sala.GetComponentInChildren<MeshRenderer>();
 
         Vector3 size = meshRenderer.bounds.size;
-        posZ -= size.z;
-        //Debug.Log($"PositionZ:{size.z}");
-        aux = size.x;
+    //     Debug.Log($"PositionZ:{size.z}");
     //     Debug.Log($"PositionXAux:{size.x}");
     //     Debug.Log($"x:{XdaSala} Y:{YdaSala}");
     //     if(roomNumber !=0){

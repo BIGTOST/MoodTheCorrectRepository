@@ -7,6 +7,7 @@ public class DoorAction : MonoBehaviour
     [SerializeField] private Transform previousRoom;
     [SerializeField] private Transform nextRoom;
     [SerializeField] private MoveCamara cam;
+    public bool passouPelaPorta = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +22,7 @@ public class DoorAction : MonoBehaviour
             else if(other.transform.position.x > transform.position.x || other.transform.position.z > transform.position.z)
             {
                 cam.MoveToNewRoom(previousRoom);
+                passouPelaPorta = true;
             }
         }
     }
