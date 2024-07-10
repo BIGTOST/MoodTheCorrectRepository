@@ -69,7 +69,9 @@ public class MovementPlayer : MonoBehaviour
     {
         if (enemyKiled >= numeroDeInimigos)
         {
+            
             uiActions.WinGame();
+
         }
     }
     public void newEnemyKiled()

@@ -34,6 +34,7 @@ public class TimeText : MonoBehaviour
 
     public void EndGame(bool win)
     {
+        ZaWarudo();
         gameEnded = true;
         float totalTime = Time.time - startTime;
         PlayerPrefs.SetFloat("FinalTime", totalTime);
@@ -47,9 +48,12 @@ public class TimeText : MonoBehaviour
     }
 
     public void ZaWarudo(){
+
         Time.timeScale = 0;
+
+        Debug.Log($"Kono Dio Da");
     }
     public void reverseZaWarudo(){
-        Time.timeScale =1;
+        Time.timeScale = 1;
     }
 }
