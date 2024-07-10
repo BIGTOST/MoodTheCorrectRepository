@@ -14,13 +14,10 @@ public class Boss : MonoBehaviour
     public GameObject closeAttackColliderPrefab; // Prefab do collider de ataque curto
     public GameObject farAttackColliderPrefab; // Prefab do collider de ataque longo
     public float maxHealth = 300f; // Vida máxima do Boss
-    public float recuoDistance = 2f; // Distância do recuo
-    public float recuoDuration = 0.5f; // Duração do recuo
 
     private float currentHealth; // Vida atual do Boss
     private float lastAttackTime = 0f; // Armazena o último tempo de ataque
     private NavMeshAgent agent; // Referência ao NavMeshAgent
-    private bool isRecoiling = false; // Se o Boss está recuando
     private bool isCloseAttack = true; // Flag para alternar entre ataques
 
     void Start()
@@ -37,7 +34,7 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        if (player != null && agent != null && !isRecoiling)
+        if (player != null && agent != null)
         {
             // Verificar se o agente está ativo e em um NavMesh
             if (!agent.isOnNavMesh)
@@ -124,10 +121,6 @@ public class Boss : MonoBehaviour
         {
             Die();
         }
-        else
-        {
-            StartCoroutine(Recoil());
-        }
     }
 
     void Die()
@@ -137,36 +130,28 @@ public class Boss : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator Recoil()
-    {
-        isRecoiling = true;
-        Vector3 recuoDirection = -transform.forward * recuoDistance;
-        Vector3 recuoTarget = transform.position + recuoDirection;
-
-        float startTime = Time.time;
-        while (Time.time < startTime + recuoDuration)
-        {
-            agent.Move(recuoDirection * Time.deltaTime / recuoDuration);
-            yield return null;
-        }
-
-        isRecoiling = false;
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PlayerMeleeAttack"))
         {
             // Causa dano ao inimigo quando colidir com o ataque corpo a corpo do jogador
-            float meleeDamage = other.gameObject.GetComponentInParent<MovementPlayer>().meleeDamage;
-            TakeDamage(meleeDamage);
+            MovementPlayer playerScript = other.gameObject.GetComponentInParent<MovementPlayer>();
+            if (playerScript != null)
+            {
+                float meleeDamage = playerScript.meleeDamage;
+                TakeDamage(meleeDamage);
+            }
         }
         else if (other.CompareTag("PlayerProjectile"))
         {
             // Causa dano ao inimigo quando colidir com o projétil do jogador
-            float projectileDamage = other.gameObject.GetComponent<Projectile>().damage;
-            TakeDamage(projectileDamage);
-            Destroy(other.gameObject); // Destroi o projétil ao colidir com o inimigo
+            Projectile projectile = other.gameObject.GetComponent<Projectile>();
+            if (projectile != null)
+            {
+                float projectileDamage = projectile.damage;
+                TakeDamage(projectileDamage);
+                Destroy(other.gameObject); // Destroi o projétil ao colidir com o inimigo
+            }
         }
     }
 }
