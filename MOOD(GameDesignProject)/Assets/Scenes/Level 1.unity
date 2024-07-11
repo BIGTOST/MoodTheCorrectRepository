@@ -22415,7 +22415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 1809306826776130326, guid: 31cc22386bdabfa4498c2c7bb2320f0c, type: 3}
-  spawnLocation: {fileID: 0}
+  spawnLocation: {fileID: 1932962307}
   isSpawned: 0
 --- !u!1 &1266893066
 GameObject:
@@ -32018,6 +32018,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d7ccce5fd3e0c94db5d88f960e52e86, type: 3}
+--- !u!1 &1932962307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 797861677201434822, guid: 3d7ccce5fd3e0c94db5d88f960e52e86, type: 3}
+  m_PrefabInstance: {fileID: 1932962306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1935236756 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7341675343410415746, guid: f9319b073db26b14599e3eb79f0bc20c, type: 3}
