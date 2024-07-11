@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     public void Pause(){
         PauseMenu.SetActive(true);
-        timeController.ZaWarudo()
+        timeController.ZaWarudo();
     }
 
     public void OptionsOpen(){
@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
     
     public void UnPause(){
         PauseMenu.SetActive(false);
-        timeController.reverseZaWarudoZaWarudo()
+        timeController.reverseZaWarudo();
     }
 
     public void WinGame(){
