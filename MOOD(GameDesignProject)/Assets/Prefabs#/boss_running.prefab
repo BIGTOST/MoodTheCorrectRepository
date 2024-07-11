@@ -96,8 +96,7 @@ MonoBehaviour:
   closeAttackColliderPrefab: {fileID: 5153152063117054055, guid: fdf5a09534eb4064e84fa91bcdb9616e, type: 3}
   farAttackColliderPrefab: {fileID: 3639167929840669517, guid: 7a692cd5027e9cc48a4ffde7bb4e89ea, type: 3}
   maxHealth: 300
-  recuoDistance: 2
-  recuoDuration: 0.5
+  currentHealth: 300
 --- !u!54 &5145864315897516192
 Rigidbody:
   m_ObjectHideFlags: 0

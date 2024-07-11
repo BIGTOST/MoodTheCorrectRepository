@@ -41,12 +41,15 @@ public class MovementPlayer : MonoBehaviour
     public UIManager uiActions;
     public int enemyKiled;
     public int numeroDeInimigos;
-    public GameObejct[] Leveis;
+    public GameObject[] Leveis;
     public int level;
+    public GameObject camara;
     #endregion
    
     void Start()
-    {
+    {   
+        Leveis[0].SetActive(true);
+        Leveis[1].SetActive(false);
         startPosition = transform.position;
         level = 0;
         enemyKiled = 0;
@@ -61,13 +64,12 @@ public class MovementPlayer : MonoBehaviour
     }
 
     public int getLevel(){
-        return this.level;
+        return this.level+1;
     }
 
     private void Update()
     {
         PauseAction();
-        EndGame();
 
         if (!isRecoiling)
         {
@@ -80,7 +82,7 @@ public class MovementPlayer : MonoBehaviour
 
     public void EndGame()
     {
-        if (level == 3)
+        if (level >= 3)
         {
             //? fazer o unlock da sala do boss
            uiActions.WinGame();
@@ -88,9 +90,11 @@ public class MovementPlayer : MonoBehaviour
         }
         else{
             level++;
-            transform.position = startPosition;
-            Leiveis[Level-1].SetActive(false);
+            //transform.position = new Vector3(0f,1.01f,-2.36f);
+            Leveis[level-1].SetActive(false);
             Leveis[level].SetActive(true);
+            //camara.transform.position = new Vector3(0,25,0);
+
         }
     }
 

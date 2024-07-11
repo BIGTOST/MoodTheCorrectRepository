@@ -13,9 +13,9 @@ public class Boss : MonoBehaviour
     public float farAttackDuration = 0.5f; // Dura��o do collider de ataque longo
     public GameObject closeAttackColliderPrefab; // Prefab do collider de ataque curto
     public GameObject farAttackColliderPrefab; // Prefab do collider de ataque longo
-    public float maxHealth = 300f; // Vida m�xima do Boss
+    public float maxHealth = 10F; // Vida m�xima do Boss
 
-    private float currentHealth; // Vida atual do Boss
+    public float currentHealth; // Vida atual do Boss
     private float lastAttackTime = 0f; // Armazena o �ltimo tempo de ataque
     private NavMeshAgent agent; // Refer�ncia ao NavMeshAgent
     private bool isCloseAttack = true; // Flag para alternar entre ataques
@@ -131,23 +131,21 @@ public class Boss : MonoBehaviour
         // L�gica de morte do Boss (destruir o objeto, tocar anima��o, etc.)
         Debug.Log("Boss morreu!");
         Destroy(gameObject);
-        player.EndGame();
 
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerMeleeAttack"))
+        Debug.Log($"Algo Acertou");
+        Debug.Log($"{other.tag}");
+        if (other.tag=="player")
         {
             // Causa dano ao inimigo quando colidir com o ataque corpo a corpo do jogador
-            MovementPlayer playerScript = other.gameObject.GetComponentInParent<MovementPlayer>();
-            if (playerScript != null)
-            {
-                float meleeDamage = playerScript.meleeDamage;
+            float meleeDamage = playerData.meleeDamage;
+                Debug.Log($"Tomo damage");
                 TakeDamage(meleeDamage);
-            }
         }
-        else if (other.CompareTag("PlayerProjectile"))
+        else if (other.tag=="PlayerProjectile")
         {
             // Causa dano ao inimigo quando colidir com o proj�til do jogador
             Projectile projectile = other.gameObject.GetComponent<Projectile>();

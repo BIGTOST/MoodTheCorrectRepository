@@ -6,11 +6,19 @@ public class ativarBoss : MonoBehaviour
 {
     public GameObject boss;
     public GameObject spawnLocation;
+    public bool isSpawned;
+    void Start()
+    {
+        isSpawned = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "player")
-        {
-            Instantiate(boss, new Vector3(spawnLocation.transform.x, spawnLocation.transform.y, spawnLocation.transform.z), Quaternion.identity);
+        if(!isSpawned){
+            if(other.tag == "player")
+            {
+                Instantiate(boss, new Vector3(spawnLocation.transform.position.x, spawnLocation.transform.position.y, spawnLocation.transform.position.z), Quaternion.identity);
+                isSpawned= true;
+            }
         }
     }
 }
