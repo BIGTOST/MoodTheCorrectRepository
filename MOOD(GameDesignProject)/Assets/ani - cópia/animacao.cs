@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class animacao : MonoBehaviour
 {
@@ -64,6 +65,7 @@ public class animacao : MonoBehaviour
 
             // Desabilita este script para parar de mover
             enabled = false;
+            SceneManager.LoadScene("StartScreen");
         }
     }
 }

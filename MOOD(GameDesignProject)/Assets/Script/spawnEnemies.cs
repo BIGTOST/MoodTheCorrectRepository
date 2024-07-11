@@ -50,7 +50,52 @@ public class spawnEnemies : MonoBehaviour
                     break
                     ;
                     case 2:
+                    //50% de chande de dar spawn ao inimigo
+                        if(lucky>= 1 || lucky<=30)
+                        {   
+                            spawnChoserd = Random.Range(0, enemySpawnPoints.Length);
+                            spawnPosition = enemySpawnPoints[spawnChoserd];
+                            Instantiate(Inimigo, new Vector3(spawnPosition.transform.position.x, spawnPosition.transform.position.y, spawnPosition.transform.position.z), Quaternion.identity);
+                        }
+                        //*40% Chance de dar spawna a 2 inimigos
+                        else if(lucky >=31 || lucky <= 70){
+                            for(int i = 0; i < 2 ; i++) {
+                                spawnChoserd = Random.Range(0, enemySpawnPoints.Length);
+                                spawnPosition = enemySpawnPoints[spawnChoserd];
+                                Instantiate(Inimigo, new Vector3(spawnPosition.transform.position.x, spawnPosition.transform.position.y, spawnPosition.transform.position.z), Quaternion.identity);
+                            }
+                        }
+                         else if(lucky >=71 || lucky <= 80){
+                            for(int i = 0; i < 3 ; i++) {
+                                spawnChoserd = Random.Range(0, enemySpawnPoints.Length);
+                                spawnPosition = enemySpawnPoints[spawnChoserd];
+                                Instantiate(Inimigo, new Vector3(spawnPosition.transform.position.x, spawnPosition.transform.position.y, spawnPosition.transform.position.z), Quaternion.identity);
+                            }
+                        }
 
+                    break;
+                    case 3:
+                        if(lucky>= 1 || lucky<=10)
+                        {   
+                            spawnChoserd = Random.Range(0, enemySpawnPoints.Length);
+                            spawnPosition = enemySpawnPoints[spawnChoserd];
+                            Instantiate(Inimigo, new Vector3(spawnPosition.transform.position.x, spawnPosition.transform.position.y, spawnPosition.transform.position.z), Quaternion.identity);
+                        }
+                        //*40% Chance de dar spawna a 2 inimigos
+                        else if(lucky >=11 || lucky <= 40){
+                            for(int i = 0; i < 2 ; i++) {
+                                spawnChoserd = Random.Range(0, enemySpawnPoints.Length);
+                                spawnPosition = enemySpawnPoints[spawnChoserd];
+                                Instantiate(Inimigo, new Vector3(spawnPosition.transform.position.x, spawnPosition.transform.position.y, spawnPosition.transform.position.z), Quaternion.identity);
+                            }
+                        }
+                         else if(lucky >=41 || lucky <= 80){
+                            for(int i = 0; i < 4 ; i++) {
+                                spawnChoserd = Random.Range(0, enemySpawnPoints.Length);
+                                spawnPosition = enemySpawnPoints[spawnChoserd];
+                                Instantiate(Inimigo, new Vector3(spawnPosition.transform.position.x, spawnPosition.transform.position.y, spawnPosition.transform.position.z), Quaternion.identity);
+                            }
+                        }
                     break;
                 }
             }
