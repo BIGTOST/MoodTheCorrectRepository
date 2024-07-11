@@ -19,10 +19,10 @@ public class DoorAction : MonoBehaviour
             {
                 cam.MoveToNewRoom(nextRoom);
             }
-            else if(other.transform.position.x > transform.position.x || other.transform.position.z > transform.position.z)
+            else
             {
                 cam.MoveToNewRoom(previousRoom);
-                passouPelaPorta = true;
+                Debug.Log($"foi para a sala anteiror");
             }
         }
     }

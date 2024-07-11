@@ -45,10 +45,6 @@ public class MovementPlayer : MonoBehaviour
     public int level;
     #endregion
    
-   void Awake()
-   {
-        DontDestroyOnLoad(gameObject);
-   }
     void Start()
     {
         startPosition = transform.position;
@@ -91,9 +87,9 @@ public class MovementPlayer : MonoBehaviour
 
         }
         else{
-            level++;
-            transform.position = startPosition;
-            SceneManager.LoadScene("Level " + level);
+            // level++;
+            // transform.position = startPosition;
+ 
         }
     }
 

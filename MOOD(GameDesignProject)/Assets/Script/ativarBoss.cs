@@ -5,11 +5,12 @@ using UnityEngine;
 public class ativarBoss : MonoBehaviour
 {
     public GameObject boss;
+    public GameObject spawnLocation;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "player")
         {
-            Instantiate(boss, new Vector3(89.08f, 0.5751381f, -0.14f), Quaternion.identity);
+            Instantiate(boss, new Vector3(spawnLocation.transform.x, spawnLocation.transform.y, spawnLocation.transform.z), Quaternion.identity);
         }
     }
 }
