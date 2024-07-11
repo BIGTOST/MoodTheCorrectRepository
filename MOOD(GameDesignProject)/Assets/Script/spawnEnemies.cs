@@ -72,7 +72,7 @@ public class spawnEnemies : MonoBehaviour
                                 Instantiate(Inimigo, new Vector3(spawnPosition.transform.position.x, spawnPosition.transform.position.y, spawnPosition.transform.position.z), Quaternion.identity);
                             }
                         }
-
+                        passedThrough = true;
                     break;
                     case 3:
                         if(lucky>= 1 || lucky<=10)
@@ -96,6 +96,7 @@ public class spawnEnemies : MonoBehaviour
                                 Instantiate(Inimigo, new Vector3(spawnPosition.transform.position.x, spawnPosition.transform.position.y, spawnPosition.transform.position.z), Quaternion.identity);
                             }
                         }
+                        passedThrough = true;
                     break;
                 }
             }

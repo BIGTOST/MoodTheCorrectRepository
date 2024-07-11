@@ -13,7 +13,7 @@ public class Boss : MonoBehaviour
     public float farAttackDuration = 0.5f; // Dura��o do collider de ataque longo
     public GameObject closeAttackColliderPrefab; // Prefab do collider de ataque curto
     public GameObject farAttackColliderPrefab; // Prefab do collider de ataque longo
-    public float maxHealth = 10F; // Vida m�xima do Boss
+    public float maxHealth; // Vida m�xima do Boss
 
     public float currentHealth; // Vida atual do Boss
     private float lastAttackTime = 0f; // Armazena o �ltimo tempo de ataque
@@ -24,6 +24,18 @@ public class Boss : MonoBehaviour
     {
         player = GameObject.FindGameObjectsWithTag("player")[0];
         playerData = player.GetComponent<MovementPlayer>();
+
+        switch (playerData.getLevel()) {
+            case 1 :
+                maxHealth = 50f;
+            break;
+            case 2:
+                maxHealth = 100f;
+            break;
+            case 3:
+                maxHealth = 150f;
+            break;
+        }
         agent = GetComponent<NavMeshAgent>(); // Inicializa a refer�ncia ao NavMeshAgent
         currentHealth = maxHealth;
 
