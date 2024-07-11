@@ -41,14 +41,14 @@ public class MovementPlayer : MonoBehaviour
     public UIManager uiActions;
     public int enemyKiled;
     public int numeroDeInimigos;
-
+    public GameObejct[] Leveis;
     public int level;
     #endregion
    
     void Start()
     {
         startPosition = transform.position;
-        level = 1;
+        level = 0;
         enemyKiled = 0;
         numeroDeInimigos = 0;
         currentHealth = maxHealth;
@@ -87,9 +87,10 @@ public class MovementPlayer : MonoBehaviour
 
         }
         else{
-            // level++;
-            // transform.position = startPosition;
- 
+            level++;
+            transform.position = startPosition;
+            Leiveis[Level-1].SetActive(false);
+            Leveis[level].SetActive(true);
         }
     }
 

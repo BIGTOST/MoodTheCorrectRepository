@@ -131,6 +131,7 @@ public class Boss : MonoBehaviour
         // L�gica de morte do Boss (destruir o objeto, tocar anima��o, etc.)
         Debug.Log("Boss morreu!");
         Destroy(gameObject);
+        player.EndGame();
 
     }
 
