@@ -50,7 +50,7 @@ public class MovementPlayer : MonoBehaviour
     {   
         Leveis[0].SetActive(true);
         Leveis[1].SetActive(false);
-        startPosition = transform.position;
+        Leveis[2].SetActive(false);
         level = 0;
         enemyKiled = 0;
         numeroDeInimigos = 0;
