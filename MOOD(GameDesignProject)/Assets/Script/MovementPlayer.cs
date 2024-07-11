@@ -38,10 +38,17 @@ public class MovementPlayer : MonoBehaviour
     public UIManager uiActions;
     public int enemyKiled;
     public int numeroDeInimigos;
+
+    [SerializeField] GameObject[] Levels;
+
+    public int level;
     #endregion
+   
     void Start()
     {
+        level = 1;
         enemyKiled = 0;
+        numeroDeInimigos = 0;
         currentHealth = maxHealth;
         _healthbar.UpdateHealthBar(maxHealth, currentHealth);
         inventory = GetComponent<Inventory>();
@@ -69,14 +76,26 @@ public class MovementPlayer : MonoBehaviour
     {
         if (enemyKiled >= numeroDeInimigos)
         {
-            
-            uiActions.WinGame();
+            //? fazer o unlock da sala do boss
+           //uiActions.WinGame();
 
         }
     }
+    public int getLevel(){
+        return this.level;
+    }
+    public void LevelPassed(){
+        this.level++;
+    }
+
     public void newEnemyKiled()
     {
         enemyKiled++;
+    }
+
+    public void updateEnemiesNumbers(int val)
+    {
+        numeroDeInimigos += val;
     }
     void MovePlayer()
     {
@@ -216,14 +235,14 @@ public class MovementPlayer : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
+    
     void Die()
     {
         // Lógica de morte do jogador (reiniciar o nível, mostrar tela de game over, etc.)
         Debug.Log("O jogador morreu!");
         SceneManager.LoadScene("GameOver");
     }
-
+    
     public void IncreaseHealth(float amount)
     {
         currentHealth += amount;

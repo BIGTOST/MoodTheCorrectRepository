@@ -14,7 +14,6 @@ public class UIMenuManager : MonoBehaviour
         MainMenu.SetActive(true);
     }
 
-
     public void OptionsOpen(){
         Options.SetActive(true);
         MainMenu.SetActive(false);
@@ -25,7 +24,6 @@ public class UIMenuManager : MonoBehaviour
         Options.SetActive(false);
         MainMenu.SetActive(true);
     }
-    
 
     public void OpenCredits()
     {
@@ -42,7 +40,6 @@ public class UIMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
-    
 
     public void Quit()
     {
