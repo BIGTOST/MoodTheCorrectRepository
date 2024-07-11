@@ -6,9 +6,9 @@ public class spawnEnemies : MonoBehaviour
 {
     private bool passedThrough;
 
-    [SerializeField] private GameObject Inimigo;
-    [SerializeField] private GameObject[] enemySpawnPoints;
-    [SerializeField] private GameObject player;
+    [SerializeField] public GameObject Inimigo;
+    [SerializeField] public GameObject[] enemySpawnPoints;
+    [SerializeField] public MovementPlayer player;
 
 
     void Awake()
@@ -27,16 +27,18 @@ public class spawnEnemies : MonoBehaviour
         {
             if(!passedThrough)
             {
-                switch(player.getLevel){
+                switch(player.getLevel()){
                     case 1:
                         if(lucky>= 1 || lucky<=50)
                         {   
                             spawnChoserd = Random.Range(0, enemySpawnPoints.Length);
                             spawnPosition = enemySpawnPoints[spawnChoserd];
-                            Instantiate(Inimigo, new Vector3(spawnPosition.trasforms.position.x, 1, spawnPosition.Trasforms.position.z), Quaternion.identity);
+                            Instantiate(Inimigo, new Vector3(spawnPosition.transform.position.x, 1, spawnPosition.transform.position.z), Quaternion.identity);
                         }
+                        passedThrough = true;
                     break
                     ;
+                    case 2:break;
                 }
             }
         }

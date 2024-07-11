@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MovementPlayer : MonoBehaviour
 {
+
+
     #region  STATS
     public CharacterController controller;
+    public Vector3 startPosition;
     public float speed = 6f;
     public float meleeRange = 1.5f;
     public float meleeDuration = 0.2f; // Tempo que dura o ataque
@@ -39,13 +42,16 @@ public class MovementPlayer : MonoBehaviour
     public int enemyKiled;
     public int numeroDeInimigos;
 
-    [SerializeField] GameObject[] Levels;
-
     public int level;
     #endregion
    
+   void Awake()
+   {
+        DontDestroyOnLoad(gameObject);
+   }
     void Start()
     {
+        startPosition = transform.position;
         level = 1;
         enemyKiled = 0;
         numeroDeInimigos = 0;
@@ -58,7 +64,11 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    void Update()
+    public int getLevel(){
+        return this.level;
+    }
+
+    private void Update()
     {
         PauseAction();
         EndGame();
@@ -72,20 +82,19 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    private void EndGame()
+    public void EndGame()
     {
-        if (enemyKiled >= numeroDeInimigos)
+        if (level == 3)
         {
             //? fazer o unlock da sala do boss
-           //uiActions.WinGame();
+           uiActions.WinGame();
 
         }
-    }
-    public int getLevel(){
-        return this.level;
-    }
-    public void LevelPassed(){
-        this.level++;
+        else{
+            level++;
+            transform.position = startPosition;
+            SceneManager.LoadScene("Level " + level);
+        }
     }
 
     public void newEnemyKiled()
@@ -240,7 +249,8 @@ public class MovementPlayer : MonoBehaviour
     {
         // Lógica de morte do jogador (reiniciar o nível, mostrar tela de game over, etc.)
         Debug.Log("O jogador morreu!");
-        SceneManager.LoadScene("GameOver");
+        uiActions.GameOver();
+
     }
     
     public void IncreaseHealth(float amount)

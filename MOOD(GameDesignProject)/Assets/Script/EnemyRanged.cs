@@ -21,6 +21,7 @@ public class EnemyRanged : MonoBehaviour
 
     void Start()
     {
+        
         agent = GetComponent<NavMeshAgent>(); // Inicializa a refer�ncia ao NavMeshAgent
         currentHealth = maxHealth;
 

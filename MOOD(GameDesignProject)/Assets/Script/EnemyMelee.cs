@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyMelee : MonoBehaviour
 {
-    public Transform player; // Referência ao transform do jogador
+    public GameObject player; // Referência ao transform do jogador
     public MovementPlayer playerData;
     public float attackRange = 2f; // Distância mínima para iniciar o ataque
     public float attackCooldown = 1f; // Tempo de recarga entre ataques
@@ -24,8 +24,10 @@ public class EnemyMelee : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectsWithTag("player")[0];
+        playerData = player.GetComponent<MovementPlayer>();
         anim = GetComponentInChildren<Animator>();
-        distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         if(anim == null){
             Debug.Log($"Animator not Found");
         }
@@ -41,7 +43,7 @@ public class EnemyMelee : MonoBehaviour
 
     void Update()
     {
-        if (player != null && agent != null && !isRecoiling)
+        if (player.transform != null && agent != null && !isRecoiling)
         {
             // Verificar se o agente está ativo e em um NavMesh
             if (!agent.isOnNavMesh)
@@ -50,13 +52,13 @@ public class EnemyMelee : MonoBehaviour
                 return;
             }
 
-            distanceToPlayer = Vector3.Distance(transform.position, player.position); // Calcula a distância do inimigo ao jogador
+            distanceToPlayer = Vector3.Distance(transform.position, player.transform.position); // Calcula a distância do inimigo ao jogador
 
             anim.SetBool("Walking", !IsPlayerInRange());
             if (IsPlayerInRange())
             {
                 // Move-se em direção ao jogador
-                agent.SetDestination(player.position);
+                agent.SetDestination(player.transform.position);
             }
             else
             {
@@ -114,11 +116,13 @@ public class EnemyMelee : MonoBehaviour
 
         // Incrementa o contador de moedas ao morrer
         CoinManager.instance.AddCoins(20);
+        
 
         // Drop de moedas
         DropCoins(4);
 
         Destroy(gameObject);
+        
     }
 
 void DropCoins(int coinCount)

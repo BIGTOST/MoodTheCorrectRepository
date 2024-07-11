@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TimeText : MonoBehaviour
 {
-    public TMP_Text timeText; // Arraste o componente de texto TMP aqui
+    public static TMP_Text timeText; // Arraste o componente de texto TMP aqui
     public float startTime;
     private bool gameStarted = false;
     private bool gameEnded = false;
