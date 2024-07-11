@@ -15,6 +15,6 @@ public class menu_vitoria : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        finalTimeText.text = string.Format("You Win!\nTime: {0:00}:{1:00}", minutes, seconds);
+        finalTimeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

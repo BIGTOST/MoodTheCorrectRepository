@@ -15,6 +15,6 @@ public class menu_derrota : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        finalTimeText.text = string.Format("Game Over!\nTime: {0:00}:{1:00}", minutes, seconds);
+        finalTimeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
