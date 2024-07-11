@@ -107,6 +107,7 @@ public class MovementPlayer : MonoBehaviour
     {
         numeroDeInimigos += val;
     }
+    
     void MovePlayer()
     {
         // Movimentos
